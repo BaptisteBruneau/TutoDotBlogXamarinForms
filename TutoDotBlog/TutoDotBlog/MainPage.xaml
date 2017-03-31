@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TutoDotBlog.CustomProperties;assembly=TutoDotBlog"
+             xmlns:vm="clr-namespace:TutoDotBlog.ViewModel;assembly=TutoDotBlog"
+             x:Class="TutoDotBlog.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Rose">Pink</Color>
+            <vm:Horloge x:Key="horloge"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout VerticalOptions="Center">
+        <Label  Text="Petit texte" FontSize="{x:Static custom:CustomFontSize.Small}" TextColor="{StaticResource Rose}" />
+        <Label  Text="Moyen texte" FontSize="{x:Static custom:CustomFontSize.Medium}" />
+        <Label  Text="Grand texte" FontSize="{x:Static custom:CustomFontSize.Large}" />
+        <Label  x:Name="heure" TextColor="Black" />
+        <Label x:Name="HorlogeDisplay" BindingContext="{StaticResource horloge}" Text="{Binding Heure}"/>
+
+
+        <Button Text="Start" BindingContext="{StaticResource horloge}" Command="{Binding StartCommand}"/>
+        <Button Text="Stop" BindingContext="{StaticResource horloge}" Command="{Binding StopCommand}"/>
+    </StackLayout>
+</ContentPage>
